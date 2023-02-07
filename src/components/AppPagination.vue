@@ -12,8 +12,8 @@
 export default {
     methods: {
         pushToSelectedPage(pageSelected) {
-            console.log(pageSelected);
-            this.$router.push({ path: `/home/${pageSelected}`});
+            this.$store.dispatch('pagination/setCurrentPage', pageSelected);
+            this.$router.push({ path: `/home/${this.currentPage}`});
         }
     },
     computed: {
@@ -22,7 +22,10 @@ export default {
         },
         itemPerPage() {
             return this.$store.getters['pagination/perPage'];
-        }
+        },
+        currentPage() {
+            return this.$store.getters['pagination/currentPage'];
+        },
     },
 }
 </script>

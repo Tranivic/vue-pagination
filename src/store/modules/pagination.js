@@ -18,8 +18,8 @@ export default {
   },
   mutations: {
     setCurrentPage(state, payload) {
-        state.currentPage = payload;
-        console.log('currentPage', state.currentPage);
+      state.currentPage = payload;
+      console.log('currentPage', state.currentPage);
     },
     setTotalOfPages(state, payload) {
       state.totalOfPages = payload;
@@ -27,11 +27,12 @@ export default {
     },
   },
   actions: {
+    setCurrentPage({ commit }, payload) {
+      commit('setCurrentPage', payload);
+    },
     getTotalOfPages({ commit, getters, rootState }) {
-        const totalOfPages = Math.ceil(
-            rootState.list.length / getters.perPage
-        );
-        commit('setTotalOfPages', totalOfPages);
+      const totalOfPages = Math.ceil(rootState.list.length / getters.perPage);
+      commit('setTotalOfPages', totalOfPages);
     },
   },
 };

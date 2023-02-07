@@ -5,9 +5,6 @@
 </template>
 <script>
 export default {
-    created() {
-        this.$store.dispatch('fecthListData');
-    },
     computed: {
         dummyList() {
             return this.$store.getters.list;
