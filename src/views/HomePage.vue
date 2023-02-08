@@ -1,6 +1,6 @@
 <template>
 <section class="home-page">
-    <h1>Home Page</h1>
+    <h1>Dummy list</h1>
     <app-list></app-list>
     <app-pagination></app-pagination>
 </section>
@@ -10,10 +10,6 @@
 import AppList from '../components/AppList.vue'
 import AppPagination from '../components/AppPagination.vue'
 export default {
-    async created() {
-        await this.$store.dispatch('fecthListData');
-        this.$store.dispatch('pagination/getTotalOfPages');
-    },
     components: {
         AppList,
         AppPagination
@@ -22,5 +18,12 @@ export default {
 </script>
 
 <style scoped>
-
+section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
 </style>
