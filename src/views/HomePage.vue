@@ -7,18 +7,18 @@
 </template>
 
 <script>
-import AppList from '../components/AppList.vue'
-import AppPagination from '../components/AppPagination.vue'
+import AppList from '../components/AppList.vue';
+import AppPagination from '../components/AppPagination.vue';
 export default {
     components: {
         AppList,
-        AppPagination
+        AppPagination,
     },
-}
+};
 </script>
 
 <style scoped>
-section{
+section {
     width: 100%;
     height: 100vh;
     display: flex;

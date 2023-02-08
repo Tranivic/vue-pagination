@@ -1,16 +1,14 @@
 <template>
 <div class="pagination">
-
     <div class="btn-container">
         <button @click="pushToSelectedPage(currentPage - 1)" class="preview-btn" :disabled="currentPage === 1">Back</button>
     </div>
-
     <div class="pagination-list-container">
         <ul v-if="isShortVersion" class="page-number-list short-version">
             <li @click="pushToSelectedPage(page)" v-for="page in totalOfPages / splitNumber" :key="page" class="page-number-item" :class="setActiveClass(page)">
                 {{ page }}
             </li>
-            <li @click="pushToSelectedPage(totalOfPages / splitNumber + 1)" class="page-number-item">...</li>
+            <span @click="pushToSelectedPage(totalOfPages / splitNumber + 1)" class="page-number-item">...</span>
             <li @click="pushToSelectedPage(totalOfPages)" class="page-number-item" :class="setActiveClass(totalOfPages)">{{ totalOfPages }}</li>
         </ul>
         <ul v-else class="page-number-list">
@@ -19,7 +17,6 @@
             </li>
         </ul>
     </div>
-
     <div class="btn-container">
         <button @click="pushToSelectedPage(currentPage + 1)" class="next-btn" :disabled="currentPage === totalOfPages">Next</button>
     </div>
@@ -31,7 +28,7 @@ export default {
     data() {
         return {
             isShortVersion: true,
-            splitNumber: 2,
+            splitNumber: 4,
         }
     },
     methods: {

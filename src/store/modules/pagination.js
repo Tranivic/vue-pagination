@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: {
-    currentPage: 1,
+    currentPage: null,
     perPage: 10,
     totalOfPages: null,
   },

@@ -10,6 +10,7 @@
 export default {
     async created() {
         await this.$store.dispatch('fecthListData');
+        this.$store.commit('pagination/setCurrentPage', this.paramInRoute);
         this.$store.dispatch('pagination/getTotalOfPages');
         this.$store.dispatch('getDisplayedList');
     },
@@ -19,6 +20,9 @@ export default {
         },
         listToDisplay() {
             return this.$store.getters.displayedList;
+        },
+        paramInRoute() {
+            return this.$route.params.id ? this.$route.params.id : 1;
         },
     },
 }
