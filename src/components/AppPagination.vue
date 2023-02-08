@@ -1,8 +1,8 @@
 <template>
 <div class="pagination">
     <ul class="page-number-list">
-        <li @click="pushToSelectedPage(pageNumber)" v-for="pageNumber in totalOfPages" :key="pageNumber" class="page-number-item">
-            {{ pageNumber }}
+        <li @click="pushToSelectedPage(page)" v-for="page in totalOfPages" :key="page" class="page-number-item" :class="setActiveClass(page)" >
+            {{ page }}
         </li>
     </ul>
 </div>
@@ -15,7 +15,10 @@ export default {
             this.$store.commit('pagination/setCurrentPage', pageSelected);
             this.$store.dispatch('getDisplayedList')
             this.$router.push({ path: `/home/${this.currentPage}`});
-        }
+        },
+        setActiveClass(page) {
+            return page === this.currentPage ? 'active' : '';
+        },
     },
     computed: {
         totalOfPages() {
@@ -45,5 +48,11 @@ export default {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: inset 0 0 5px #ccc;
+}
+.page-number-item:hover{
+    background-color: #ccc;
+}
+.page-number-item.active{
+    background-color: #ccc;
 }
 </style>
