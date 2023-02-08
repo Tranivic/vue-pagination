@@ -28,8 +28,14 @@ export default createStore({
   actions: {
     async fecthListData({ commit }) {
       const respose = await fetch('https://jsonplaceholder.typicode.com/todos');
-      const data = await respose.json();
-      commit('setListData', data);
+      const fetchedData = await respose.json();
+      const formatedData = fetchedData.map((item) => {
+        return {
+          id: item.id,
+          title: item.title,
+        };
+      });
+      commit('setListData', formatedData);
       if (!respose.ok) {
         throw new Error(respose.statusText || 'Something went wrong');
       }
